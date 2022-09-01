@@ -2,7 +2,9 @@ import disnake, os, json, random
 from disnake.ext import commands
 from scripts import utilScripts as uS
 from scripts import feedbackForm as FB
+from dotenv import load_dotenv
 
+load_dotenv()
 bot = commands.InteractionBot()
 
 

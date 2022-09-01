@@ -5,6 +5,7 @@ from scripts import feedbackForm as FB
 from dotenv import load_dotenv
 
 load_dotenv()
+
 bot = commands.InteractionBot()
 
 
@@ -90,4 +91,4 @@ class textCommands():
         """)
         bot.allowed_mentions = disnake.AllowedMentions(everyone= True)
 
-bot.run(os.getenv("GreyAdminBot"))
+bot.run(os.getenv("TE"))

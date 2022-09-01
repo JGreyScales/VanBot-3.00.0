@@ -1,5 +1,4 @@
 from datetime import datetime
-from urllib import response
 from disnake import TextInputStyle
 import json, disnake
 

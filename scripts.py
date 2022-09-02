@@ -1,4 +1,5 @@
 from datetime import datetime
+from urllib import response
 from disnake import TextInputStyle
 import json, disnake
 
@@ -10,11 +11,14 @@ class utilScripts:
     def log(message):
         print(str(datetime.now()) + ":\t" + message)
 
-    def cacheChanges(configJson = "", storageJson = ""):
+    def cacheChanges(configJson = "", storageJson = "", responses = ""):
         if configJson != "": 
             with open("config.json", "w") as CONFIGFILE: json.dump(configJson, CONFIGFILE)
         if storageJson != "":
             with open("vans.json", "w") as STORAGEFILE: json.dump(storageJson, STORAGEFILE)
+        if responses != "":
+            with open("userResponseLogs\Responses.txt", "w") as RESPONSEFILE: RESPONSEFILE.write(response)
+
 
 # Subclassing the modal.
 class feedbackForm(disnake.ui.Modal):

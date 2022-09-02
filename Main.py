@@ -128,7 +128,7 @@ class textCommands():
 
     @bot.listen()
     async def on_ready():
-        await bot.change_presence(activity=disnake.Activity(type=disnake.ActivityType.playing, name="Vanning sim 3.00.0 BETA"))
+        await bot.change_presence(activity=disnake.Activity(type=disnake.ActivityType.playing, name="Vanning sim 3.00.1"))
         print(f"""
         Bot Boot Log:
             Status:{bot.status}

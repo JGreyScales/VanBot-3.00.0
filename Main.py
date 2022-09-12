@@ -3,7 +3,6 @@ from disnake.ext import commands
 from scripts import utilScripts as uS
 from scripts import feedbackForm as FB
 from dotenv import load_dotenv
-from dotenv import load_dotenv
 
 load_dotenv()
 
@@ -100,18 +99,18 @@ class textCommands():
                 while content.find("@") != -1:
                     content = content[content.find("@") + 1:]
                     ids.append(content[:content.find(">")])
-
+                    
+                with open("vans.json", "r") as STORAGEFILE: storagejson = json.load(STORAGEFILE)
                 for user in ids:
-                    with open("vans.json", "r") as STORAGEFILE: storagejson = json.load(STORAGEFILE)
                     try: 
                         storagejson[str(user)] += 1
                     except(KeyError): 
                         uS.log("Error, Profile not found")
                         await message.channel.send("Creating profile for:" + str(await message.guild.fetch_member(int(user))))
                         storagejson[str(user)] = 1
-                    with open("config.json", "r") as CONFIGFILE: vanGif = random.choice(json.load(CONFIGFILE)["VanGifs"])
-                    with open("vans.json", "w") as STORAGEFILE: storagejson = json.dump(storagejson, STORAGEFILE, indent=4)
                     titles += f" {str(await message.guild.fetch_member(user))}"
+                with open("config.json", "r") as CONFIGFILE: vanGif = random.choice(json.load(CONFIGFILE)["VanGifs"])
+                with open("vans.json", "w") as STORAGEFILE: storagejson = json.dump(storagejson, STORAGEFILE, indent=4)
                 await message.channel.send(f"{message.author.name} has vanned:{titles}\n{vanGif}")
 
 
@@ -128,7 +127,7 @@ class textCommands():
 
     @bot.listen()
     async def on_ready():
-        await bot.change_presence(activity=disnake.Activity(type=disnake.ActivityType.playing, name="Vanning sim 3.00.1"))
+        await bot.change_presence(activity=disnake.Activity(type=disnake.ActivityType.playing, name="Vanning sim 3.00.2"))
         print(f"""
         Bot Boot Log:
             Status:{bot.status}
